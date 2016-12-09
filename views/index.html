@@ -10,9 +10,20 @@
   <body>
     <form action="/newportal" method="post">
       <input type="text" name="name" placeholder="Portal name" />
-      <input type="text" name="bgcolor" placeholder="Background Color" />
-      <input type="text" name="fgcolor" placeholder="Foreground Color" />
+      <input type="color" name="bgcolor" placeholder="Background Color" />
+      <input type="color" name="fgcolor" placeholder="Foreground Color" />
       <input type="checkbox" name="email_login_field" value="true" />
+      <select multiple name="languages">
+        <option value="sv">Svenska</option>
+        <option value="dk">Danska</option>
+        <option value="en">English</option>
+        <option value="fi">Finska</option>
+
+      </select>
+
+      <select>
+        <option></option>
+      </select>
       <input type="submit" value="Create JSON" />
     </form>
   </body>

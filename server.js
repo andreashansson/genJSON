@@ -1,8 +1,8 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var fs = require('fs');
 var modul = require('./modules/modules.js');
+var fs = require('fs');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -16,37 +16,21 @@ app.get('/', function(req, res, next) {
 
 app.post("/newportal", function(req, res, next) {
 
-  var name = req.body.name;
+  var email = modul.checkboxValue(req.body.email_login_field);
+  var tempLang2 = {}
+  var langJSON;
 
-  var dataInput = {
-    "name": name,
-    "bgcolor": req.body.bgcolor,
-    "fgcolor": req.body.fgcolor,
-    "email_login_field": modul.checkboxValue(req.body.email_login_field)
-    //"languages": languages
-  }
+  fs.readFile("languages.json", function(err, data) {
+    var langString = data.toString();
+    langJSON = JSON.parse(langString);
+    //var langKeys = Object.keys(langJSON.languages);
+    var langs = req.body.languages;
+    console.log(typeof langs);
 
-  var dataString = JSON.stringify(dataInput);
-
-  var data = fs.readFile(name + ".json", function(err, data) {
-    if(err) {
-      //console.error(err);
-      console.log("File doesn't exist.");
-      console.log("New file is being created.");
-      fs.writeFile(name + ".json", dataString, (err) => {
-        if (err) throw err;
-        console.log("File " + name + ".json created and saved.");
-        console.log("File content:");
-        console.log(dataString);
-      });
+    for (var i=0; i<langs.length; i++) {
+      tempLang2[langs[i]] = langJSON.languages[langs[i]];
     }
-    else {
-      //File exist but overwrites with new values.
-      fs.writeFile(name + ".json", dataString, (err) => {
-        if (err) throw err;
-      });
-      console.log(dataString);
-    }
+    modul.createJSON(req.body.name, req.body.bgcolor, req.body.fgcolor, email, tempLang2);
   });
 
   res.redirect('/');
