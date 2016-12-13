@@ -4,28 +4,55 @@
     <!-- Meta -->
     <meta charset="utf-8" />
     <!-- Stylesheets -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- Javascript -->
+    <script src="/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="/js/script.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
   </head>
 
   <body>
-    <form action="/newportal" method="post">
-      <input type="text" name="name" placeholder="Portal name" />
-      <input type="color" name="bgcolor" placeholder="Background Color" />
-      <input type="color" name="fgcolor" placeholder="Foreground Color" />
-      <input type="checkbox" name="email_login_field" value="true" />
-      <select multiple name="languages">
-        <option value="sv">Svenska</option>
-        <option value="dk">Danska</option>
-        <option value="en">English</option>
-        <option value="fi">Finska</option>
+    <div class="container">
+      <form action="/newportal" method="post">
+        <div class="form-group">
+          <label for="portalName">Portal name:</label>
+          <input type="text" class="form-control" id="portalName" name="portalname" placeholder="Portalname">
+        </div>
+        <div class="form-group color">
+          <label for="bgcolor">Background Color:</label>
+          <input type="color" class="form-control" name="bgcolor" id="bgcolor" />
+        </div>
+        <div class="form-group color">
+          <label for="fgcolor">Foreground Color:</label>
+          <input type="color" class="form-control" name="fgcolor" id="fgcolor" />
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="map" value="true">Map
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="connectivity" value="true">Connectivity
+          </label>
+        </div>
 
-      </select>
+        <select id="langList" class="list-group" multiple>
+        </select>
 
-      <select>
-        <option></option>
-      </select>
-      <input type="submit" value="Create JSON" />
-    </form>
+        <select id="selectedLangs" class="list-group" multiple name="languages">
+        </select>
+
+        <input type="submit" class="btn btn-primary" value="Create JSON" />
+      </form>
+
+    </div>
+
+    <iframe src="/iframe"></iframe>
+
+    <script src="/js/jquery-3.1.1.min.js" type="javascript"></script>
+    <script src="/js/script.js" type="javascript"></script>
   </body>
-
 </html>

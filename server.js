@@ -14,23 +14,34 @@ app.get('/', function(req, res, next) {
   res.render("index.html");
 });
 
+app.get('/iframe', function(req, res, next) {
+  res.render("preview/index.html");
+});
+
 app.post("/newportal", function(req, res, next) {
 
-  var email = modul.checkboxValue(req.body.email_login_field);
+  var map = modul.getValueFromCheckbox(req.body.map);
+  var connectivity = modul.getValueFromCheckbox(req.body.connectivity);
   var tempLang2 = {}
   var langJSON;
 
-  fs.readFile("languages.json", function(err, data) {
+  fs.readFile("public/json/languages.json", function(err, data) {
     var langString = data.toString();
     langJSON = JSON.parse(langString);
-    //var langKeys = Object.keys(langJSON.languages);
+    var langKeys = Object.keys(langJSON.languages);
     var langs = req.body.languages;
-    console.log(typeof langs);
+    console.log(langs);
 
-    for (var i=0; i<langs.length; i++) {
-      tempLang2[langs[i]] = langJSON.languages[langs[i]];
+    if (typeof langs === "string") {
+      modul.createJSON(req.body.portalname, req.body.bgcolor, req.body.fgcolor, map, connectivity, langs);
     }
-    modul.createJSON(req.body.name, req.body.bgcolor, req.body.fgcolor, email, tempLang2);
+    else {
+      for (var i=0; i<langs.length; i++) {
+        tempLang2[langs[i]] = langJSON.languages[langs[i]];
+      }
+      modul.createJSON(req.body.portalname, req.body.bgcolor, req.body.fgcolor, map, connectivity, tempLang2);
+    }
+
   });
 
   res.redirect('/');
