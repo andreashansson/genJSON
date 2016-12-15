@@ -5,6 +5,9 @@ var modul = require('./modules/modules.js');
 var fs = require('fs');
 
 app.use(express.static('public'));
+//app.use(express.static('views/preview/'));
+
+
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.set("view-engine", "ejs");
@@ -14,7 +17,7 @@ app.get('/', function(req, res, next) {
   res.render("index.html");
 });
 
-app.get('/iframe', function(req, res, next) {
+app.get('/preview', function(req, res, next) {
   res.render("preview/index.html");
 });
 
@@ -35,7 +38,7 @@ app.post("/newportal", function(req, res, next) {
     if (typeof langs === "string") {
       modul.createJSON(req.body.portalname, req.body.bgcolor, req.body.fgcolor, map, connectivity, langs);
     }
-    else {
+    else if (langs === "object") {
       for (var i=0; i<langs.length; i++) {
         tempLang2[langs[i]] = langJSON.languages[langs[i]];
       }

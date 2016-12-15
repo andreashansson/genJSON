@@ -1,1 +1,1 @@
-{"name":"vanilla","bgcolor":"#000000","fgcolor":"#000000","languages":{"en":"English","dk":"Danska"},"connectivity":false,"map":true}
+{"name":"vanilla","bgcolor":"#905a5a","fgcolor":"#000000","default_language":"en","connectivity":true,"map":false}

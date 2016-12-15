@@ -1,23 +1,99 @@
-<!doctype>
-<html lang="en">
-  <head>
-    <!-- Meta -->
-    <meta charset="utf-8" />
-    <!-- Stylesheets -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+<!doctype html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>flixbus</title>
+        <link rel="stylesheet" href="/css/main.css" type="text/css" />
+        <script defer src="/js/jquery-3.1.1.min.js"></script>
+        <script defer src="/js/js-cookie.js"></script>
+        <script defer src="/js/remember_me.js"></script>
+        <script defer src="/js/icomera_user.js"></script>
+        <script defer src="/js/icomera_support_information.js"></script>
+        
+        
+        
+    </head>
+    <body>
+        <div id="content"> <!-- scrollable content -->
+            <header>
+                <div class="header-row">
+                    <img src="/images/logo.png" alt="flixbus" class="main-logo"
+                            data-image="/images/logo" />
+                    
+                    
+                </div>
+            </header>
+            <main style="background-image:url('/images/background.jpg')" data-image="/images/background">
+                <div class="user-offline login">
+                    <div  data-slot="Login text" >
+                        <h1>Welcome to your free WiFi</h1>
+                        <p>
+                            This Wi-Fi zone, powered by Icomera, lets you connect
+                            to the Internet to check your email, surf the web,
+                            play games and connect to your corporate network.
+                        </p>
+                    </div>
+                    <form class="login-form" method="post" action="/connect.php">
+                        
+                        <label>
+                            <input type="checkbox" required />
+                            <span  data-slot="Login form terms label" >
+                                I accept the <a href="terms.html">terms and conditions</a>.
+                            </span>
+                        </label>
+                        
+                            <input type="hidden" name="lang" value="en" />
+                        
+                        <div class="form-buttons">
+                            <button type="submit"  data-slot="Login button"  class="button">
+                                Connect
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="user-online">
+                    <div  data-slot="Offline text" >
+                        <h1>You are now connected</h1>
+                        <p>
+                            You have been connected to the Internet!
+                        </p>
+                    </div>
+                </div>
+            </main>
+            
+            <footer>
+                <nav>
+                    <a href="http://www.icomera.com/">
+                        <img src="/images/powered-by-icomera.png" alt="Powered by Icomera" class="powered-by-icomera-logo" />
+                    </a>
+                    <ul class="footer-links" id="menu-footer">
+                        <li><a href="terms.html">Term &amp; Conditions</a></li>
+                        <li><a href="http://www.icomera.com/policies/">Privacy Policy</a></li>
+                    </ul>
+                </nav>
+                <div class="copyright-notice">
+                    <p  data-slot="Footer text" >© 2016 Icomera AB All Rights Reserved.</p>
+                    <p class="support-information-button" hidden  data-slot="Technical support information" >Show support information.</p>
+                </div>
+            </footer>
+        </div>
+        <div class="quota-footer user-online"> <!-- fixed footer -->
+            <div class="quota-vaild footer-quota">
+                <span>
+                    <span>You have used</span>
+                    <span class="quota-usage-span">0</span>
+                    <span>out of</span>
+                    <span class="quota-limitation-span">0</span>
+                    <span>MB.</span>
+                </span>
+                <div class="used-data-meter footer-quota-meter">
+                    <div class="quota-limitation-bar footer-quota-meter-fill">
 
-    <!-- Javascript -->
-    <script src="/js/jquery-3.1.1.min.js" type="text/javascript"></script>
-    <script src="/js/script.js" type="text/javascript"></script>
-    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
-  </head>
-
-  <body>
-
-    Preview Window
-
-    <script src="/js/jquery-3.1.1.min.js" type="javascript"></script>
-    <script src="/js/script.js" type="javascript"></script>
-  </body>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
